@@ -1,26 +1,40 @@
 #include <Module1.hpp>
 #include <Module2.hpp>
 #include <Module3.hpp>
+#include <Module4.hpp>
 
 int main() {
-    size_t numberOfStudents = getNumOfStudents();
-    std::vector<Student> students(numberOfStudents);
-    inputData(students);
-    Posibilities choice = getChoice();
-    switch (choice) {
-        case Posibilities::SHOWTABLE: {
-            printData(students);
-            break;
+    std::cout << "Lets start\n";
+    int numberOfStudents = getNumOfStudents();
+    inputData(numberOfStudents);
+    Posibilities choice;
+    do {
+        choice = getChoice();
+        switch (choice) {
+            case Posibilities::SHOWTABLE: {
+                outputAllStudentsFromFile();
+                break;
+            }
+            case Posibilities::SHOWSTUDENT: {
+                Student neededStudent = get_Student();
+                printNeededStudent(getStudentsFromFile(), neededStudent);
+                break;
+            }
+            case Posibilities::APPENDSTUDENT: {
+                Student studentToAppend = get_Student(true);
+                appendStudentToFile(studentToAppend);
+                break;
+            }
+            case Posibilities::CLEARFILE: {
+                clearFile();
+                break;
+            }
+            case Posibilities::QUIT: {
+                std::cout << "Thanks for using my program...\n";
+                break;
+            }
         }
-        case Posibilities::SHOWSTUDENT: {
-            Student neededStudent = getStudent();
-            printNeededStudent(students, neededStudent);
-            break;
-        }
-        default: {
-            std::cout << "We don't have this option" << std::endl;
-            break;
-        }
-    }
+    } while(choice != Posibilities::QUIT);
+
     return 0;
 }

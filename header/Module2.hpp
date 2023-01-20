@@ -1,30 +1,35 @@
-#include <Module1.hpp>
+#pragma once
 
-void printHeadLine();
-void printData(std::vector<Student> &students);
-void inputData(std::vector<Student> &students);
+#include <Module1.hpp>
+#include <Module4.hpp>
+
+Student get_Student(bool addMarks);
+std::vector<Student> getStudentsFromFile();
 void printNeededStudent(const std::vector<Student> &students, const Student &neededStudent);
 
-void printData(std::vector<Student> &students) {
-    printHeadLine();
-    for (const Student &student : students) {
-        std::cout << student;
+Student get_Student(bool addMarks = false) {
+    Student neededStudent;
+    neededStudent.firstName = getName("first name");
+    neededStudent.lastName = getName("last name");
+    neededStudent.middlename = getName("middle name");
+    if(addMarks) {
+        neededStudent.mathMark = getMark("math mark");
+        neededStudent.languageMark = getMark("language mark");
+        neededStudent.programmingMark = getMark("programming mark");
     }
+    return neededStudent;
 }
-void printHeadLine() {
-    std::cout << std::setw(WIDTH) << std::left << "First name"  
-    << std::setw(WIDTH) << std::left << "Last name"  
-    << std::setw(WIDTH) << std::left << "Middle name"  
-    << std::setw(WIDTH) << std::left << "Math mark" 
-    << std::setw(WIDTH) << std::left << "Language mark"  
-    << std::setw(WIDTH) << std::left << "Programming mark"  
-    << std::setw(WIDTH) << std::left << "Average mark" << std::endl;
-}
-void inputData(std::vector<Student> &students) {
-    for(auto &student : students) {
-        std::cout << "Input info about sudent:\n";
-        std::cin >> student;
+std::vector<Student> getStudentsFromFile() {
+    std::vector<Student> students;
+    std::ifstream inputFile("Students.txt");
+    if (inputFile.is_open()) {
+        Student student;
+        while (inputFile >> student) {
+            students.push_back(student);
+        }
+        inputFile.close();
     }
+    return students;
 }
 void printNeededStudent(const std::vector<Student> &students, const Student &neededStudent) {
     bool flag = false;
