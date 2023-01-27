@@ -84,9 +84,8 @@ void outputAllStudentsFromFile() {
     }
     Student student;
     printHeadLine();
-    while (!studentsFile.eof()) {
-        studentsFile >> student.firstName >> student.lastName >> student.middlename 
-                    >> student.mathMark >> student.languageMark >> student.programmingMark;
+    while (studentsFile >> student.firstName >> student.lastName >> student.middlename 
+                    >> student.mathMark >> student.languageMark >> student.programmingMark) {
         std::cout << student << std::endl;
     }
     studentsFile.close();
