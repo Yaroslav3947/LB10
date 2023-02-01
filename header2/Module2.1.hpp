@@ -4,6 +4,8 @@
 
 #include <map>
 #include <cmath>
+#include <string>
+#include <fstream>
 #include <iostream>
 #include <functional>
 
@@ -22,6 +24,7 @@ double get_num();
 int get_factorial_num();
 void showPosibilities();
 TrigonometricFunctions get_choice();
+void writeMessageToFile(const std::string &message);
 
 double get_num() {
     double num;
@@ -51,4 +54,13 @@ TrigonometricFunctions get_choice() {
     std::cout << "Enter your choice:" << std::endl;
     std::cin >> choice;
     return static_cast<TrigonometricFunctions>(choice);
+}
+void writeMessageToFile(const std::string &message) {
+    std::ofstream fileWithMessages("TrigonometricFunctions.txt", std::ios::app);
+    if (fileWithMessages.is_open()) {
+        fileWithMessages << message << std::endl;
+    } else {
+        std::cout << "Failed to open file" << std::endl;
+    }
+    fileWithMessages.close();
 }
