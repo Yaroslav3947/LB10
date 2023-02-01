@@ -7,11 +7,11 @@ int getNumOfStudents();
 double getMark(const std::string &markType);
 void inputData(const int &numberOfStudents);
 void writeStudentToFile(const Student &student);
-std::string getName(const std::string& nameType);
+std::string getName(const std::string &nameType);
 
-double getMark(const std::string& markType) {
+double getMark(const std::string &markType) {
     double mark;
-    std::cout << "Enter "<< markType <<":";
+    std::cout << "Enter " << markType << ":";
     std::cin >> mark;
     return mark;
 }
@@ -28,26 +28,26 @@ std::string getName(const std::string &nameType) {
     return name;
 }
 void clearFile() {
-    std::ofstream outfile;
-    outfile.open("Students.txt", std::ofstream::out | std::ofstream::trunc);
-    outfile << "";
+    std::ofstream studentsFile;
+    studentsFile.open("Students.txt", std::ofstream::out | std::ofstream::trunc);
+    studentsFile << "";
     std::cout << "File has been successfully cleaned...\n";
-    outfile.close();
+    studentsFile.close();
 }
 void writeStudentToFile(const Student &student) {
     std::ofstream outFile("Students.txt", std::ios::app);
-    if(!outFile) {
+    if (!outFile) {
         std::cout << "Can't open a file\n";
     }
-    outFile << student.firstName << ' ' << student.lastName << ' ' << student.middlename 
+    outFile << student.firstName << ' ' << student.lastName << ' ' << student.middlename
             << ' ' << student.mathMark << ' ' << student.languageMark << ' ' << student.programmingMark << '\n';
     outFile.close();
 }
 void inputData(const int &numberOfStudents) {
     Student student;
-    for(int i{0};i< numberOfStudents;i++) {
+    for (int i{0}; i < numberOfStudents; i++) {
         std::cout << "Input info about sudent:\n";
-        std::cin >> student;
+        inputInfoAboutStudent(student);
         writeStudentToFile(student);
     }
 }

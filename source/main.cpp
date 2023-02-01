@@ -16,7 +16,7 @@ int main() {
                 break;
             }
             case Posibilities::SHOWSTUDENT: {
-                Student neededStudent = get_Student();
+                Student neededStudent = get_Student(false);
                 printNeededStudent(getStudentsFromFile(), neededStudent);
                 break;
             }
