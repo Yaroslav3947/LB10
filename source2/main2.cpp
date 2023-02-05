@@ -1,6 +1,7 @@
 #include <Module2.1.hpp>
 #include <Module2.2.hpp>
 #include <Module2.3.hpp>
+#include <Module2.4.hpp>
 
 // int main() {
 //     TrigonometricFunctions choice;
@@ -11,7 +12,8 @@
 //         {TrigonometricFunctions::CTAN, printCtan},
 //         {TrigonometricFunctions::SQRT, printSqrt},
 //         {TrigonometricFunctions::FACT, printFactorial},
-//         {TrigonometricFunctions::EXP, printExp}
+//         {TrigonometricFunctions::EXP, printExp},
+//         {TrigonometricFunctions::OUTPUT_FILE, outputAllInfoFromFile()}
 //     };
 //     do {
 //         choice = get_choice();
@@ -55,6 +57,9 @@ int main() {
                 break;
             case TrigonometricFunctions::EXP:
                 printExp(get_num());
+                break;
+            case TrigonometricFunctions::OUTPUT_FILE:
+                outputAllInfoFromFile();
                 break;
             default:
                 std::cout << "Invalid choice. Please try again." << std::endl;

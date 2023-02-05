@@ -53,6 +53,16 @@
         "unordered_map": "cpp",
         "xhash": "cpp",
         "fstream": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "cstdarg": "cpp",
+        "cwctype": "cpp",
+        "deque": "cpp",
+        "algorithm": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "sstream": "cpp"
     }
 }
