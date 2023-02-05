@@ -1,1 +1,3 @@
-d d d 10 12 12
+Sasha Latkiv Jurii 10 10 10
+Vlad Savchul Yard 9 9 9
+Yar Koh Iv 10 11 12
